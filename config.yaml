@@ -1,0 +1,31 @@
+cat > configs/unet_resnet34.yaml << 'EOF'
+project_name: route-resilience
+
+data:
+  train_images: data/processed/train/images
+  train_masks: data/processed/train/masks
+  val_images: data/processed/val/images
+  val_masks: data/processed/val/masks
+  test_images: data/processed/test/images
+  test_masks: data/processed/test/masks
+
+model:
+  name: unet
+  encoder: resnet34
+  pretrained: true
+  in_channels: 3
+  num_classes: 1
+
+training:
+  image_size: 512
+  batch_size: 4
+  epochs: 20
+  learning_rate: 0.0001
+  loss: dice_bce
+
+outputs:
+  checkpoints: outputs/checkpoints
+  logs: outputs/logs
+  predictions: outputs/predictions
+  graph_ready: outputs/graph_ready
+EOF

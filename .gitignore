@@ -1,13 +1,40 @@
 cat > .gitignore << 'EOF'
-data/raw/
-data/processed/
-outputs/
-checkpoints/
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Mac
+.DS_Store
+
+# Env
+.env
+venv/
+.venv/
+
+# Model weights
 *.pth
 *.pt
 *.ckpt
-.env
-__pycache__/
-.DS_Store
-.ipynb_checkpoints/
+
+# Raw and processed data contents
+data/raw/images/*
+data/raw/masks/*
+data/processed/train/images/*
+data/processed/train/masks/*
+data/processed/val/images/*
+data/processed/val/masks/*
+data/processed/test/images/*
+data/processed/test/masks/*
+
+# Outputs contents
+outputs/checkpoints/*
+outputs/logs/*
+outputs/predictions/prob_masks/*
+outputs/predictions/binary_masks/*
+outputs/predictions/overlays/*
+outputs/graph_ready/*
+
+# Keep folder placeholders
+!**/.gitkeep
 EOF
